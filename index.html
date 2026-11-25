@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DompetNol — Warm Deep Earth Tone</title>
+  <title>DompetNol — Vintage Ledger & Library Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Warm Deep Earth Tone Palette */
-      --bg-main: #F4EDE3;
-      --bg-pattern: #EAE0D2;
-      --surface: #FFFDF9;
-      --surface-soft: #F7F1E8;
-      --surface-deep: #2C221C;
-      --ink: #241C17;
-      --ink-soft: #6C5D52;
-      --forest: #2D4A3A;
-      --forest-dark: #1F3529;
-      --forest-soft: #E5EDE7;
-      --terracotta: #9E4A32;
-      --terracotta-soft: #F7E8E2;
-      --ochre: #A9722A;
-      --ochre-soft: #F8EFE0;
-      --border: #E2D6C5;
-      --shadow: 0 10px 26px rgba(44, 34, 28, 0.08);
+      --bg-paper: #EFE6D5;
+      --bg-parchment: #F6EFE2;
+      --surface: #FCF8F0;
+      --surface-soft: #F3EAD9;
+      --surface-deep: #261C15;
+      --leather: #3B271C;
+      --ink: #241A13;
+      --ink-soft: #665547;
+      --forest: #2B4636;
+      --forest-dark: #1D3125;
+      --forest-soft: #E2EBE4;
+      --terracotta: #9A462E;
+      --terracotta-soft: #F5E4DE;
+      --brass: #A67328;
+      --brass-soft: #F5EBD7;
+      --border: #D9C9B1;
+      --shadow: 0 10px 26px rgba(38, 28, 21, 0.10);
     }
 
     * {
@@ -37,12 +37,18 @@
       margin: 0;
       font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
-      background-color: var(--bg-main);
+      background-color: var(--bg-paper);
       background-image:
-        radial-gradient(circle at 20% 10%, rgba(169, 114, 42, 0.07), transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(45, 74, 58, 0.07), transparent 45%);
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 27px,
+          rgba(139, 115, 85, 0.08) 28px
+        ),
+        radial-gradient(circle at 18% 8%, rgba(166, 115, 40, 0.10), transparent 42%),
+        radial-gradient(circle at 85% 28%, rgba(43, 70, 54, 0.09), transparent 45%);
       min-height: 100vh;
-      padding-bottom: 92px;
+      padding-bottom: 96px;
     }
 
     .app-shell {
@@ -51,36 +57,51 @@
       padding: 14px 14px 32px;
     }
 
-    /* Header & Sync Bar */
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
+      box-shadow: inset 0 0 0 3px var(--bg-parchment), var(--shadow);
       border-radius: 18px;
-      padding: 10px 12px;
+      padding: 11px 14px;
       margin-bottom: 12px;
-      box-shadow: var(--shadow);
       flex-wrap: wrap;
     }
 
     .brand-group {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .brand-emblem {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--leather);
+      color: #F3DFC1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--brass);
+      flex-shrink: 0;
     }
 
     .brand-title {
-      font-weight: 800;
-      font-size: 15px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.05;
       color: var(--surface-deep);
-      letter-spacing: -0.2px;
     }
 
     .brand-sub {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--ink-soft);
+      font-weight: 600;
     }
 
     .top-actions {
@@ -92,12 +113,13 @@
 
     .sync-pill {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--forest);
       background: var(--forest-soft);
+      border: 1px solid rgba(43, 70, 54, 0.2);
       padding: 4px 9px;
       border-radius: 999px;
-      max-width: 145px;
+      max-width: 155px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -111,8 +133,11 @@
       font-weight: 700;
       cursor: pointer;
       background: var(--forest);
-      color: #FFFDF9;
+      color: #FCF8F0;
       font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .btn-mini.secondary {
@@ -121,9 +146,9 @@
       border: 1px solid var(--border);
     }
 
-    .btn-mini.ochre {
-      background: var(--ochre);
-      color: #FFFDF9;
+    .btn-mini.brass {
+      background: var(--brass);
+      color: #FCF8F0;
     }
 
     .btn-mini.danger {
@@ -131,32 +156,48 @@
       color: var(--terracotta);
     }
 
-    /* Hero Wealth Card (Inspired by Video) */
     .hero-card {
-      background: linear-gradient(145deg, #2D4A3A 0%, #23382C 60%, #2C221C 100%);
-      color: #FFFDF9;
-      border-radius: 24px;
+      position: relative;
+      background: linear-gradient(155deg, #332117 0%, #24382C 58%, #1E2C23 100%);
+      color: #FCF8F0;
+      border-radius: 22px;
       padding: 18px;
       margin-bottom: 14px;
-      box-shadow: 0 14px 30px rgba(35, 56, 44, 0.22);
+      border: 1.5px solid #8A6432;
+      box-shadow: inset 0 0 0 4px rgba(212, 175, 114, 0.14), 0 14px 30px rgba(38, 28, 21, 0.24);
+      overflow: hidden;
+    }
+
+    .hero-bookmark {
+      position: absolute;
+      top: 0;
+      right: 18px;
+      width: 22px;
+      height: 34px;
+      background: var(--terracotta);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+      border-top: 2px solid #D9B06A;
     }
 
     .hero-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 11px;
-      letter-spacing: 0.6px;
+      gap: 6px;
+      font-size: 10.5px;
+      letter-spacing: 0.9px;
       text-transform: uppercase;
-      color: rgba(255, 253, 249, 0.76);
-      margin-bottom: 6px;
+      color: #E3C799;
+      margin-bottom: 4px;
+      font-weight: 700;
     }
 
     .hero-net {
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
       margin-bottom: 12px;
+      color: #FFFBF2;
     }
 
     .hero-split {
@@ -164,13 +205,13 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 253, 249, 0.14);
+      border-bottom: 1px dashed rgba(227, 199, 153, 0.28);
       margin-bottom: 12px;
     }
 
     .hero-sub-label {
       font-size: 11px;
-      color: rgba(255, 253, 249, 0.72);
+      color: rgba(252, 248, 240, 0.74);
     }
 
     .hero-sub-val {
@@ -181,7 +222,7 @@
 
     .hero-sub-hint {
       font-size: 11px;
-      color: #E7C389;
+      color: #E5C185;
       margin-top: 2px;
     }
 
@@ -193,14 +234,15 @@
     }
 
     .hm-box {
-      background: rgba(255, 253, 249, 0.08);
+      background: rgba(252, 248, 240, 0.08);
+      border: 1px solid rgba(227, 199, 153, 0.16);
       border-radius: 12px;
       padding: 8px 9px;
     }
 
     .hm-label {
       font-size: 10px;
-      color: rgba(255, 253, 249, 0.72);
+      color: rgba(252, 248, 240, 0.74);
     }
 
     .hm-val {
@@ -209,7 +251,6 @@
       font-size: 12px;
     }
 
-    /* Quick Action Strip (Catat, Mutasi, Transfer, Target) */
     .quick-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -219,40 +260,41 @@
 
     .q-btn {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
       padding: 10px 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
       font-family: inherit;
       font-size: 11px;
       font-weight: 700;
       color: var(--ink);
-      box-shadow: 0 4px 12px rgba(44, 34, 28, 0.04);
+      box-shadow: 0 4px 12px rgba(38, 28, 21, 0.05);
     }
 
     .q-icon {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
       background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: var(--leather);
     }
 
-    /* Standard Cards */
     .card {
+      position: relative;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
       padding: 16px;
       margin-bottom: 14px;
-      box-shadow: var(--shadow);
+      box-shadow: inset 0 0 0 3px rgba(243, 234, 217, 0.45), var(--shadow);
     }
 
     .card-header-row {
@@ -263,9 +305,16 @@
       margin-bottom: 10px;
     }
 
+    .card-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
     .card-title {
-      font-size: 16px;
-      font-weight: 800;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
       margin: 0;
       color: var(--surface-deep);
     }
@@ -290,12 +339,15 @@
       cursor: pointer;
       padding: 0;
       font-family: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .progress-track {
       height: 10px;
       border-radius: 999px;
-      background: #ECE2D3;
+      background: #E7DAC4;
+      border: 1px solid #D6C4A8;
       overflow: hidden;
       margin-bottom: 9px;
     }
@@ -303,22 +355,22 @@
     .progress-fill {
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #B87B4B, #9E4A32);
+      background: linear-gradient(90deg, #B57545, #9A462E);
       transition: width 0.25s ease;
     }
 
     .progress-fill.forest {
-      background: linear-gradient(90deg, #4E7A61, #2D4A3A);
+      background: linear-gradient(90deg, #4B755D, #2B4636);
     }
 
-    .progress-fill.ochre {
-      background: linear-gradient(90deg, #CFA054, #A9722A);
+    .progress-fill.brass {
+      background: linear-gradient(90deg, #CCA052, #A67328);
     }
 
-    /* Wallet Readiness % */
     .readiness-score {
-      font-size: 28px;
-      font-weight: 800;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
       color: var(--forest);
     }
 
@@ -332,7 +384,7 @@
     .pillar-box {
       background: var(--surface-soft);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 13px;
       padding: 9px 10px;
     }
 
@@ -349,7 +401,6 @@
       color: var(--surface-deep);
     }
 
-    /* Two-column Mini Insights (Aman/hari & Runway) */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -359,20 +410,29 @@
 
     .mini-card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 18px;
       padding: 13px;
       box-shadow: var(--shadow);
     }
 
     .mini-val {
-      font-size: 18px;
-      font-weight: 800;
-      margin: 4px 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 3px 0;
       color: var(--surface-deep);
     }
 
-    /* Wallets / Bank Cards with Edit Saldo */
+    .ex-libris-note {
+      text-align: center;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding: 4px 10px 14px;
+    }
+
     .wallet-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -382,7 +442,7 @@
     .wallet-card {
       background: var(--surface-soft);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 15px;
       padding: 11px;
       display: flex;
       flex-direction: column;
@@ -415,7 +475,6 @@
       margin-top: 2px;
     }
 
-    /* Debt & Celengan Rows */
     .inline-form {
       display: flex;
       gap: 8px;
@@ -442,7 +501,6 @@
       margin-bottom: 9px;
     }
 
-    /* Visual Analytics */
     .seg-small {
       display: inline-flex;
       background: var(--surface-soft);
@@ -465,8 +523,8 @@
     }
 
     .seg-small button.active {
-      background: var(--forest);
-      color: #FFFDF9;
+      background: var(--leather);
+      color: #FCF8F0;
     }
 
     .cat-list-item {
@@ -479,12 +537,13 @@
     .cat-badge {
       width: 36px;
       height: 36px;
-      border-radius: 12px;
+      border-radius: 11px;
+      border: 1px solid rgba(139, 115, 85, 0.22);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
       flex-shrink: 0;
+      color: var(--leather);
     }
 
     .cat-bar-wrap { flex: 1; min-width: 0; }
@@ -500,7 +559,7 @@
     .cat-mini-track {
       height: 7px;
       border-radius: 999px;
-      background: #ECE2D3;
+      background: #E7DAC4;
       overflow: hidden;
     }
 
@@ -543,7 +602,6 @@
     .cf-bar.in { background: var(--forest); }
     .cf-bar.out { background: var(--terracotta); }
 
-    /* History & Filter */
     .search-box {
       width: 100%;
       border: 1px solid var(--border);
@@ -579,9 +637,9 @@
     }
 
     .f-pill.active {
-      background: var(--forest);
-      color: #FFFDF9;
-      border-color: var(--forest);
+      background: var(--leather);
+      color: #FCF8F0;
+      border-color: var(--leather);
     }
 
     .tx-day-header {
@@ -593,6 +651,8 @@
       color: var(--ink-soft);
       margin: 12px 0 6px;
       text-transform: uppercase;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 4px;
     }
 
     .tx-row {
@@ -601,7 +661,7 @@
       justify-content: space-between;
       gap: 10px;
       padding: 9px 0;
-      border-bottom: 1px solid #EFE5D8;
+      border-bottom: 1px solid #EAE0CE;
     }
 
     .tx-row:last-child { border-bottom: none; }
@@ -633,7 +693,7 @@
     .tx-amt { font-size: 13px; font-weight: 800; }
     .tx-amt.out { color: var(--terracotta); }
     .tx-amt.in { color: var(--forest); }
-    .tx-amt.tr { color: var(--ochre); }
+    .tx-amt.tr { color: var(--brass); }
 
     .tx-del {
       background: none;
@@ -644,14 +704,13 @@
       padding: 2px 4px;
     }
 
-    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(255, 253, 249, 0.96);
-      border-top: 1px solid var(--border);
+      background: rgba(252, 248, 240, 0.96);
+      border-top: 1.5px solid var(--border);
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -675,30 +734,29 @@
     }
 
     .nav-item.active {
-      color: var(--forest);
+      color: var(--leather);
     }
 
     .nav-fab {
-      border: none;
+      border: 1px solid #D6B06E;
       border-radius: 999px;
-      background: var(--forest);
-      color: #FFFDF9;
+      background: var(--leather);
+      color: #FCF8F0;
       font-size: 13px;
       font-weight: 800;
       padding: 10px 18px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(45, 74, 58, 0.32);
+      box-shadow: 0 8px 20px rgba(59, 39, 28, 0.32);
       font-family: inherit;
     }
 
     .tab-view { display: none; }
     .tab-view.active { display: block; }
 
-    /* Modals */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(36, 28, 23, 0.45);
+      background: rgba(36, 26, 19, 0.50);
       display: none;
       align-items: flex-end;
       justify-content: center;
@@ -714,9 +772,10 @@
       max-height: 92vh;
       overflow-y: auto;
       background: var(--surface);
+      border: 1.5px solid var(--border);
       border-radius: 26px 26px 0 0;
       padding: 16px 16px 26px;
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.18);
     }
 
     .sheet-top {
@@ -726,13 +785,19 @@
       margin-bottom: 12px;
     }
 
-    .sheet-title { font-size: 19px; font-weight: 800; margin: 0; color: var(--surface-deep); }
+    .sheet-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--surface-deep);
+    }
 
     .close-btn {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: none;
+      border: 1px solid var(--border);
       background: var(--surface-soft);
       color: var(--ink-soft);
       font-size: 16px;
@@ -763,8 +828,8 @@
     }
 
     .seg-btn.active {
-      background: var(--forest);
-      color: #FFFDF9;
+      background: var(--leather);
+      color: #FCF8F0;
     }
 
     .amount-display {
@@ -776,7 +841,7 @@
       margin-bottom: 14px;
     }
 
-    .rp-prefix { font-size: 22px; font-weight: 800; color: var(--forest); }
+    .rp-prefix { font-size: 22px; font-weight: 800; color: var(--brass); }
 
     .amount-input {
       width: 100%;
@@ -807,7 +872,7 @@
     .cat-tile {
       border: 1.5px solid var(--border);
       background: var(--surface);
-      border-radius: 16px;
+      border-radius: 15px;
       padding: 9px 6px;
       display: flex;
       flex-direction: column;
@@ -821,8 +886,8 @@
     }
 
     .cat-tile.selected {
-      border-color: var(--forest);
-      background: var(--forest-soft);
+      border-color: var(--leather);
+      background: var(--brass-soft);
     }
 
     .cat-icon-box {
@@ -832,7 +897,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      color: var(--leather);
     }
 
     .income-type-grid {
@@ -900,7 +965,7 @@
       border: none;
       border-radius: 999px;
       background: var(--forest);
-      color: #FFFDF9;
+      color: #FCF8F0;
       font-size: 15px;
       font-weight: 700;
       padding: 13px;
@@ -922,13 +987,28 @@
       font-size: 13px;
     }
 
+    .diag-banner {
+      display: none;
+      background: var(--terracotta-soft);
+      border: 1px solid var(--terracotta);
+      color: var(--terracotta);
+      border-radius: 14px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .diag-banner.show { display: block; }
+
     .toast {
       position: fixed;
       top: 14px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--surface-deep);
-      color: #FFFDF9;
+      background: var(--leather);
+      color: #FCF8F0;
+      border: 1px solid var(--brass);
       font-size: 12px;
       font-weight: 600;
       padding: 8px 15px;
@@ -944,26 +1024,35 @@
   <div id="toast" class="toast"></div>
 
   <div class="app-shell">
-    <!-- Top Bar -->
     <div class="top-bar">
       <div class="brand-group">
-        <div class="brand-title">DompetNol</div>
-        <div class="brand-sub">Bebas Tagihan Rp35 Jt → Freedom Usia 32</div>
+        <div class="brand-emblem" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <path d="M12 6v6l3-2 3 2V6"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">DompetNol · Ledger</div>
+          <div class="brand-sub">Bab I: Lunas Rp35 Jt → Bab II: Freedom Usia 32</div>
+        </div>
       </div>
       <div class="top-actions">
-        <div id="sync-status" class="sync-pill">Mode lokal</div>
+        <div id="sync-status" class="sync-pill">Memuat sync...</div>
         <button id="sync-now-btn" type="button" class="btn-mini secondary">Sync</button>
         <button id="auth-btn" type="button" class="btn-mini">Login Google</button>
       </div>
     </div>
 
+    <div id="auth-diag" class="diag-banner"></div>
+
     <!-- TAB 1: BERANDA -->
     <section id="tab-beranda" class="tab-view active">
-      <!-- Total Kekayaan Bersih Card (Video Inspired) -->
       <div class="hero-card">
+        <div class="hero-bookmark" aria-hidden="true"></div>
         <div class="hero-top">
-          <span>Total Kekayaan & Kas</span>
-          <span id="hero-month-label">Bulan Ini</span>
+          <span>Buku Besar Kekayaan & Kas</span>
         </div>
         <div id="hero-net-worth" class="hero-net">Rp0</div>
         <div class="hero-split">
@@ -994,27 +1083,33 @@
         </div>
       </div>
 
-      <!-- Quick Action Strip -->
       <div class="quick-strip">
         <button type="button" class="q-btn" data-open-type="expense">
-          <span class="q-icon">−</span>
+          <span class="q-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </span>
           <span>Catat Keluar</span>
         </button>
         <button type="button" class="q-btn" data-open-type="income">
-          <span class="q-icon">+</span>
+          <span class="q-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          </span>
           <span>Uang Masuk</span>
         </button>
         <button type="button" class="q-btn" data-open-type="transfer">
-          <span class="q-icon">⇄</span>
+          <span class="q-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </span>
           <span>Transfer</span>
         </button>
         <button type="button" class="q-btn" id="q-import-btn">
-          <span class="q-icon">📄</span>
+          <span class="q-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </span>
           <span>Import Mutasi</span>
         </button>
       </div>
 
-      <!-- Aman/Hari & Ketahanan Dana (Runway) -->
       <div class="grid-2">
         <div class="mini-card">
           <div class="label-muted" id="safe-days-label">Aman jatah / hari</div>
@@ -1028,11 +1123,13 @@
         </div>
       </div>
 
-      <!-- Kesiapan Dompet ke Next Step (%) -->
       <div class="card">
         <div class="card-header-row">
           <div>
-            <h2 class="card-title">Kesiapan Dompet ke Next Step</h2>
+            <div class="card-title-wrap">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2B4636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              <h2 class="card-title">Kesiapan Dompet ke Bab Berikutnya</h2>
+            </div>
             <div class="label-muted">Bebas tagihan Rp35 jt → Saving & Invest → Freedom 32</div>
           </div>
           <div id="readiness-pct" class="readiness-score">0%</div>
@@ -1061,10 +1158,12 @@
         </div>
       </div>
 
-      <!-- Analitik Visual (Kategori & Arus Kas) -->
       <div class="card">
         <div class="card-header-row">
-          <h2 class="card-title">Analitik Visual</h2>
+          <div class="card-title-wrap">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3B271C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <h2 class="card-title">Catatan & Analitik</h2>
+          </div>
           <div class="seg-small">
             <button type="button" id="ana-tab-cat" class="active">Kategori</button>
             <button type="button" id="ana-tab-cf">Arus Kas</button>
@@ -1079,17 +1178,23 @@
         <div id="ana-cf-view" style="display:none;"></div>
       </div>
 
-      <!-- Transaksi Terakhir -->
       <div class="card">
         <div class="card-header-row">
-          <h2 class="card-title">Transaksi Terakhir</h2>
-          <button type="button" class="link-btn" id="see-all-tx-btn">Lihat Semua</button>
+          <div class="card-title-wrap">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3B271C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <h2 class="card-title">Entri Buku Terbaru</h2>
+          </div>
+          <button type="button" class="link-btn" id="see-all-tx-btn">Buka Arsip</button>
         </div>
         <div id="home-tx-list"></div>
       </div>
+
+      <div class="ex-libris-note">
+        “Every small entry is a page turned toward freedom.”
+      </div>
     </section>
 
-    <!-- TAB 2: ASET & BANK (Edit Saldo + Kelola Bank & Rekapan) -->
+    <!-- TAB 2: ASET & BANK -->
     <section id="tab-aset" class="tab-view">
       <div class="card">
         <div class="card-header-row">
@@ -1113,9 +1218,8 @@
       </div>
     </section>
 
-    <!-- TAB 3: TAGIHAN & CELENGAN (Rp35 Jt + Saving/Invest) -->
+    <!-- TAB 3: TAGIHAN & CELENGAN -->
     <section id="tab-target" class="tab-view">
-      <!-- Tracker Tagihan Rp35 Jt -->
       <div class="card">
         <div class="card-header-row">
           <h2 class="card-title">Kewajiban Tagihan Utama</h2>
@@ -1132,22 +1236,21 @@
         </div>
       </div>
 
-      <!-- Celengan / Pos Saving & Invest -->
       <div class="card">
         <div class="card-header-row">
           <h2 class="card-title">Celengan & Investasi (Usia 32)</h2>
-          <button id="add-celengan-btn" type="button" class="btn-mini ochre">+ Celengan</button>
+          <button id="add-celengan-btn" type="button" class="btn-mini brass">+ Celengan</button>
         </div>
         <div class="label-muted" style="margin-bottom:10px;">Pisahkan dana darurat, tabungan, atau investasi agar tidak terpakai belanja harian.</div>
         <div id="celengan-list"></div>
       </div>
     </section>
 
-    <!-- TAB 4: RIWAYAT LENGKAP -->
+    <!-- TAB 4: ARSIP RIWAYAT -->
     <section id="tab-riwayat" class="tab-view">
       <div class="card">
         <div class="card-header-row">
-          <h2 class="card-title">Riwayat Transaksi Lengkap</h2>
+          <h2 class="card-title">Arsip Transaksi Lengkap</h2>
           <span id="history-count" class="budget-meta">0 transaksi</span>
         </div>
         <input id="history-search" type="search" class="search-box" placeholder="Cari catatan, kategori, bank, atau rekap..." />
@@ -1162,28 +1265,30 @@
     </section>
   </div>
 
-  <!-- Bottom Navigation Bar -->
   <nav class="bottom-nav">
     <button type="button" class="nav-item active" data-tab="tab-beranda">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       <span>Beranda</span>
     </button>
     <button type="button" class="nav-item" data-tab="tab-aset">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
       <span>Aset & Bank</span>
     </button>
     <button type="button" class="nav-fab" id="open-sheet-btn">+ Catat</button>
     <button type="button" class="nav-item" data-tab="tab-target">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
       <span>Tagihan & Saving</span>
     </button>
     <button type="button" class="nav-item" data-tab="tab-riwayat">
-      <span>Riwayat</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Arsip</span>
     </button>
   </nav>
 
-  <!-- Modal / Bottom Sheet Catat Transaksi -->
   <div id="tx-modal" class="modal-backdrop" role="dialog" aria-modal="true">
     <div class="sheet">
       <div class="sheet-top">
-        <h2 class="sheet-title">Catat transaksi</h2>
+        <h2 class="sheet-title">Catat Entri Baru</h2>
         <button id="close-sheet-btn" type="button" class="close-btn">×</button>
       </div>
 
@@ -1193,7 +1298,7 @@
 
       <div id="import-box" style="display:none;background:var(--surface-soft);border:1px solid var(--border);border-radius:14px;padding:10px;margin-bottom:12px;">
         <div class="label-muted" style="margin-bottom:6px;">Tempel baris mutasi (contoh: <code>2026-11-25 Makan siang 25000</code> atau <code>2026-11-25 Fee proyek 500000 masuk</code>)</div>
-        <textarea id="import-text" style="width:100%;min-height:70px;border:1px solid var(--border);border-radius:10px;padding:8px;font-size:12px;font-family:inherit;margin-bottom:8px;"></textarea>
+        <textarea id="import-text" style="width:100%;min-height:70px;border:1px solid var(--border);border-radius:10px;padding:8px;font-size:12px;font-family:inherit;margin-bottom:8px;background:#FCF8F0;"></textarea>
         <button id="run-import-btn" type="button" class="btn-mini">Proses Mutasi</button>
       </div>
 
@@ -1209,13 +1314,11 @@
           <input id="tx-amount" type="number" inputmode="numeric" min="1" step="any" placeholder="0" class="amount-input" required />
         </div>
 
-        <!-- Kategori khusus KELUAR -->
         <div id="expense-category-section">
           <span class="section-label">Kategori Pengeluaran</span>
           <div id="category-grid" class="cat-grid"></div>
         </div>
 
-        <!-- Jenis Uang Masuk khusus MASUK (simpel tanpa kategori pengeluaran) -->
         <div id="income-type-section" style="display:none;">
           <span class="section-label">Jenis Uang Masuk</span>
           <div id="income-type-grid" class="income-type-grid"></div>
@@ -1240,7 +1343,7 @@
         <div class="form-grid-2">
           <div class="field-box">
             <label for="tx-note">Catatan (opsional)</label>
-            <input id="tx-note" type="text" placeholder="misal: kopi, fee klien" />
+            <input id="tx-note" type="text" placeholder="misal: buku, kopi, fee klien" />
           </div>
           <div class="field-box" id="rekap-field-wrap">
             <label for="tx-rekap">Masuk rekap</label>
@@ -1248,14 +1351,32 @@
           </div>
         </div>
 
-        <button type="submit" class="submit-main">Simpan</button>
+        <button type="submit" class="submit-main">Simpan ke Buku</button>
       </form>
     </div>
   </div>
 
   <script>
     (function () {
-      const STORAGE_KEY = "dompetku_earthtone_v4";
+      const STORAGE_KEY = "dompetku_vintage_v5";
+
+      const VINTAGE_ICONS = {
+        Makan: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/></svg>',
+        "Jajan & Kopi": '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/></svg>',
+        Transport: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+        Belanja: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+        Tagihan: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>',
+        Pakaian: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>',
+        Kesehatan: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        Hiburan: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>',
+        "Buku & Ilmu": '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+        Hadiah: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>',
+        Rumah: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+        Lainnya: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>',
+        Income: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>',
+        Transfer: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>'
+      };
+
       const DEFAULT_STATE = {
         updatedAtClient: Date.now(),
         monthlyBudget: 1000000,
@@ -1279,18 +1400,18 @@
           "Transfer / Lainnya"
         ],
         categories: [
-          { id: "Makan", label: "Makan", icon: "🍲", bg: "#F5E7DF", bar: "#9E4A32" },
-          { id: "Jajan & Kopi", label: "Jajan & Kopi", icon: "☕", bg: "#EFE5D8", bar: "#8C6239" },
-          { id: "Transport", label: "Transport", icon: "🛵", bg: "#E4ECE6", bar: "#2D4A3A" },
-          { id: "Belanja", label: "Belanja", icon: "🛍️", bg: "#F6ECD9", bar: "#A9722A" },
-          { id: "Tagihan", label: "Tagihan", icon: "🧾", bg: "#EAE4DC", bar: "#5D534A" },
-          { id: "Pakaian", label: "Pakaian", icon: "👚", bg: "#F3E4DC", bar: "#A85D43" },
-          { id: "Kesehatan", label: "Kesehatan", icon: "🩺", bg: "#E3ECE5", bar: "#3E6B52" },
-          { id: "Hiburan", label: "Hiburan", icon: "🎬", bg: "#EDE4DC", bar: "#7A5C48" },
-          { id: "Pendidikan", label: "Pendidikan", icon: "📚", bg: "#E7EAE4", bar: "#4A6252" },
-          { id: "Hadiah", label: "Hadiah", icon: "🎁", bg: "#F4E5DF", bar: "#9C5440" },
-          { id: "Rumah", label: "Rumah", icon: "🏠", bg: "#EFE6DA", bar: "#8D6843" },
-          { id: "Lainnya", label: "Lainnya", icon: "✨", bg: "#F5ECD9", bar: "#A9722A" }
+          { id: "Makan", label: "Makan", bg: "#F4E5DD", bar: "#9A462E" },
+          { id: "Jajan & Kopi", label: "Jajan & Kopi", bg: "#EDE3D3", bar: "#855E38" },
+          { id: "Transport", label: "Transport", bg: "#E1EAE3", bar: "#2B4636" },
+          { id: "Belanja", label: "Belanja", bg: "#F4EAD6", bar: "#A67328" },
+          { id: "Tagihan", label: "Tagihan", bg: "#E7E0D6", bar: "#584D43" },
+          { id: "Pakaian", label: "Pakaian", bg: "#F1E1D8", bar: "#A2583E" },
+          { id: "Kesehatan", label: "Kesehatan", bg: "#E0E9E2", bar: "#3B664E" },
+          { id: "Hiburan", label: "Hiburan", bg: "#EAE1D7", bar: "#745743" },
+          { id: "Buku & Ilmu", label: "Buku & Ilmu", bg: "#E4E7DF", bar: "#465D4E" },
+          { id: "Hadiah", label: "Hadiah", bg: "#F2E2DB", bar: "#964E3B" },
+          { id: "Rumah", label: "Rumah", bg: "#ECE3D6", bar: "#87623E" },
+          { id: "Lainnya", label: "Lainnya", bg: "#F3E9D5", bar: "#A67328" }
         ],
         transactions: []
       };
@@ -1312,11 +1433,17 @@
       let historyFilter = "ALL";
       let historyQuery = "";
 
+      let fbAuth = null;
       let fbDb = null;
       let fbUser = null;
       let fbSetDoc = null;
       let fbDoc = null;
       let fbServerTimestamp = null;
+      let fbSignInWithPopup = null;
+      let fbSignInWithRedirect = null;
+      let fbSignOut = null;
+      let fbProvider = null;
+      let fbReady = false;
       let unsubSnapshot = null;
       let isApplyingCloud = false;
 
@@ -1339,7 +1466,19 @@
         el.textContent = msg;
         el.classList.add("show");
         clearTimeout(showToast._t);
-        showToast._t = setTimeout(() => el.classList.remove("show"), 2300);
+        showToast._t = setTimeout(() => el.classList.remove("show"), 2600);
+      }
+
+      function setDiag(msg) {
+        const el = document.getElementById("auth-diag");
+        if (!el) return;
+        if (!msg) {
+          el.classList.remove("show");
+          el.textContent = "";
+        } else {
+          el.textContent = msg;
+          el.classList.add("show");
+        }
       }
 
       function cloneDefault() {
@@ -1348,7 +1487,7 @@
 
       function loadLocalState() {
         try {
-          const raw = localStorage.getItem(STORAGE_KEY);
+          const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("dompetku_earthtone_v4");
           if (!raw) return cloneDefault();
           const p = JSON.parse(raw);
           const def = cloneDefault();
@@ -1359,7 +1498,7 @@
             rekaps: Array.isArray(p.rekaps) && p.rekaps.length ? p.rekaps : def.rekaps,
             celengans: Array.isArray(p.celengans) ? p.celengans : def.celengans,
             incomeTypes: Array.isArray(p.incomeTypes) && p.incomeTypes.length ? p.incomeTypes : def.incomeTypes,
-            categories: Array.isArray(p.categories) && p.categories.length ? p.categories : def.categories,
+            categories: def.categories,
             transactions: Array.isArray(p.transactions) ? p.transactions : []
           };
         } catch (_) {
@@ -1420,7 +1559,7 @@
         const [removed] = state.transactions.splice(idx, 1);
         applyTxToWallets(removed, "revert");
         saveState();
-        showToast("Transaksi dihapus");
+        showToast("Entri dihapus");
       }
 
       function computeReadiness(totalIn, totalOut, totalCash, totalSaving) {
@@ -1457,6 +1596,12 @@
         return { overall, cashflowPct, debtPct, bufferPct, habitPct, phaseText };
       }
 
+      function getIconSvg(catId, type) {
+        if (type === "transfer") return VINTAGE_ICONS.Transfer;
+        if (type === "income") return VINTAGE_ICONS.Income;
+        return VINTAGE_ICONS[catId] || VINTAGE_ICONS.Lainnya;
+      }
+
       function renderAll() {
         const now = new Date();
         const ym = now.toISOString().slice(0, 7);
@@ -1473,7 +1618,6 @@
         const dRem = Math.max(0, dInit - dPaid);
         const dPct = dInit > 0 ? Math.min(100, Math.round((dPaid / dInit) * 100)) : 100;
 
-        // Hero card
         document.getElementById("hero-net-worth").textContent = formatRp(netWorth);
         document.getElementById("hero-cash").textContent = formatRp(totalCash);
         document.getElementById("hero-free-cash").textContent = `Dana bebas: ${formatRp(Math.max(0, totalCash))}`;
@@ -1484,7 +1628,6 @@
         const saveRate = totalIn > 0 ? Math.max(0, Math.round(((totalIn - totalOut) / totalIn) * 100)) : 0;
         document.getElementById("hero-save-rate").textContent = saveRate + "%";
 
-        // Safe daily & Runway
         const budget = Math.max(0, Number(state.monthlyBudget) || 0);
         const sisaBudget = budget - totalOut;
         const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
@@ -1500,7 +1643,6 @@
         document.getElementById("runway-days").textContent = runwayDays >= 999 ? "999+ hari" : `${runwayDays} hari`;
         document.getElementById("avg-daily-out").textContent = `Rata-rata keluar: ${formatRp(avgDailyOut)}/hr`;
 
-        // Readiness
         const rd = computeReadiness(totalIn, totalOut, totalCash, totalSaving);
         document.getElementById("readiness-pct").textContent = rd.overall + "%";
         document.getElementById("readiness-bar").style.width = rd.overall + "%";
@@ -1510,12 +1652,10 @@
         document.getElementById("p-buffer").textContent = rd.bufferPct + "%";
         document.getElementById("p-habit").textContent = rd.habitPct + "%";
 
-        // Debt card
         document.getElementById("debt-status-text").textContent = `Sisa ${formatRp(dRem)} / ${formatRp(dInit)}`;
         document.getElementById("debt-bar").style.width = dPct + "%";
         document.getElementById("debt-paid-hint").textContent = `Terbayar ${formatRp(dPaid)} (${dPct}%)`;
 
-        // Celengan list
         const celEl = document.getElementById("celengan-list");
         celEl.innerHTML = state.celengans.map((c) => {
           const cPct = c.target > 0 ? Math.min(100, Math.round((c.saved / c.target) * 100)) : 0;
@@ -1526,7 +1666,7 @@
                 <span class="budget-meta">${formatRp(c.saved)} / ${formatRp(c.target)} (${cPct}%)</span>
               </div>
               <div class="progress-track" style="margin-bottom:8px;">
-                <div class="progress-fill ochre" style="width:${cPct}%;"></div>
+                <div class="progress-fill brass" style="width:${cPct}%;"></div>
               </div>
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 <button type="button" class="btn-mini" data-cel-add="${c.id}">+ Isi Saldo</button>
@@ -1537,7 +1677,6 @@
           `;
         }).join("") || `<div class="label-muted">Belum ada pos celengan.</div>`;
 
-        // Wallet Grid (Tab Aset & Bank)
         document.getElementById("wallet-grid").innerHTML = state.wallets.map((w) => `
           <div class="wallet-card">
             <div class="wallet-top">
@@ -1552,7 +1691,6 @@
           </div>
         `).join("");
 
-        // Rekap selects & manage list
         const rekapFilter = document.getElementById("rekap-filter");
         const prevFilter = rekapFilter.value || "ALL";
         rekapFilter.innerHTML = `<option value="ALL">Semua rekap</option>` +
@@ -1574,7 +1712,6 @@
           </div>
         `).join("");
 
-        // Analitik Kategori
         const activeRekap = rekapFilter.value;
         const filteredOut = monthTxs.filter(
           (t) => t.type === "expense" && (activeRekap === "ALL" || (t.rekap || "Pribadi") === activeRekap)
@@ -1592,11 +1729,11 @@
           catView.innerHTML = `<div class="label-muted">Belum ada pengeluaran bulan ini untuk filter ini.</div>`;
         } else {
           catView.innerHTML = sortedCats.map(([catName, amt]) => {
-            const meta = state.categories.find((c) => c.id === catName) || { icon: "✨", bg: "#F5ECD9", bar: "#A9722A" };
+            const meta = state.categories.find((c) => c.id === catName) || { bg: "#F3E9D5", bar: "#A67328" };
             const wPct = Math.max(6, Math.round((amt / maxCat) * 100));
             return `
               <div class="cat-list-item">
-                <div class="cat-badge" style="background:${meta.bg};">${meta.icon}</div>
+                <div class="cat-badge" style="background:${meta.bg};">${getIconSvg(catName, "expense")}</div>
                 <div class="cat-bar-wrap">
                   <div class="cat-bar-top">
                     <span>${escapeHtml(catName)}</span>
@@ -1611,13 +1748,9 @@
           }).join("");
         }
 
-        // Analitik Arus Kas (4 bulan terakhir)
         renderCashflowChart();
-
-        // Home recent transactions (5 terbaru)
         document.getElementById("home-tx-list").innerHTML = renderGroupedTxHtml(state.transactions.slice(0, 5), false);
 
-        // Full history tab
         const filteredHistory = state.transactions.filter((t) => {
           if (historyFilter !== "ALL" && t.type !== historyFilter) return false;
           if (!historyQuery) return true;
@@ -1672,7 +1805,7 @@
 
       function renderGroupedTxHtml(list, allowDelete) {
         if (!list.length) {
-          return `<div class="label-muted">Belum ada transaksi yang cocok.</div>`;
+          return `<div class="label-muted">Belum ada catatan pada halaman ini.</div>`;
         }
         const grouped = {};
         list.forEach((t) => {
@@ -1691,8 +1824,7 @@
 
           const rows = items.map((item) => {
             const meta = state.categories.find((c) => c.id === item.category) || {
-              icon: item.type === "transfer" ? "⇄" : item.type === "income" ? "↓" : "✨",
-              bg: item.type === "transfer" ? "#F8EFE0" : item.type === "income" ? "#E5EDE7" : "#F5ECD9"
+              bg: item.type === "transfer" ? "#F5EBD7" : item.type === "income" ? "#E2EBE4" : "#F3E9D5"
             };
             const sub = item.type === "transfer"
               ? `${wName(item.walletId)} → ${wName(item.toWalletId)}${item.note ? " · " + item.note : ""}`
@@ -1706,7 +1838,7 @@
             return `
               <div class="tx-row">
                 <div class="tx-left">
-                  <div class="cat-badge" style="background:${meta.bg};">${meta.icon}</div>
+                  <div class="cat-badge" style="background:${meta.bg};">${getIconSvg(item.category, item.type)}</div>
                   <div style="min-width:0;">
                     <div class="tx-title">${escapeHtml(item.type === "transfer" ? "Transfer" : item.category)}</div>
                     <div class="tx-sub">${escapeHtml(sub)}</div>
@@ -1738,7 +1870,7 @@
         const grid = document.getElementById("category-grid");
         grid.innerHTML = state.categories.map((c) => `
           <button type="button" class="cat-tile ${c.id === selectedCategory ? "selected" : ""}" data-cat="${escapeHtml(c.id)}">
-            <div class="cat-icon-box" style="background:${c.bg};">${c.icon}</div>
+            <div class="cat-icon-box" style="background:${c.bg};">${getIconSvg(c.id, "expense")}</div>
             <span>${escapeHtml(c.label)}</span>
           </button>
         `).join("");
@@ -1840,49 +1972,100 @@
             updatedAtServer: fbServerTimestamp ? fbServerTimestamp() : Date.now()
           }, { merge: true });
           if (statusEl) statusEl.textContent = "Live: " + (fbUser.email || "Cloud");
-        } catch (_) {
-          if (statusEl) statusEl.textContent = "Lokal (cek sync)";
+        } catch (err) {
+          const code = err && err.code ? err.code : "gagal-simpan";
+          if (statusEl) statusEl.textContent = "Cloud: " + code;
+          setDiag("Gagal menyimpan ke Firestore (" + code + "). Pastikan Firestore Rules sudah dipublish.");
         }
       }
+
+      document.getElementById("auth-btn").addEventListener("click", async () => {
+        const statusEl = document.getElementById("sync-status");
+        if (window.location.protocol === "file:") {
+          const msg = "Login Google tidak bisa jalan dari file lokal (file://). Buka lewat link GitHub Pages https://...";
+          setDiag(msg);
+          showToast("Buka lewat URL GitHub Pages");
+          return;
+        }
+        if (!fbReady || !fbAuth || !fbProvider) {
+          const msg = "SDK Google Auth belum selesai dimuat atau terblokir jaringan. Coba refresh halaman.";
+          setDiag(msg);
+          showToast("Menghubungkan SDK Google...");
+          return;
+        }
+        try {
+          if (fbUser) {
+            if (unsubSnapshot) { unsubSnapshot(); unsubSnapshot = null; }
+            await fbSignOut(fbAuth);
+            setDiag("");
+            showToast("Keluar dari akun Google");
+          } else {
+            setDiag("");
+            if (statusEl) statusEl.textContent = "Membuka Google...";
+            showToast("Membuka jendela login Google...");
+            await fbSignInWithPopup(fbAuth, fbProvider);
+          }
+        } catch (err) {
+          const code = err && err.code ? err.code : (err && err.message ? err.message : "unknown-error");
+          if (code === "auth/popup-blocked" || code === "auth/cancelled-popup-request") {
+            showToast("Mengalihkan ke halaman login Google...");
+            try {
+              await fbSignInWithRedirect(fbAuth, fbProvider);
+              return;
+            } catch (e2) {
+              setDiag("Redirect login gagal: " + (e2.code || e2.message));
+            }
+          } else if (code === "auth/unauthorized-domain") {
+            const host = window.location.hostname || "domain-ini";
+            setDiag("Domain '" + host + "' belum didaftarkan di Firebase Console -> Authentication -> Settings -> Authorized domains.");
+          } else if (code === "auth/operation-not-allowed") {
+            setDiag("Provider Google belum aktif. Buka Firebase Console -> Authentication -> Sign-in method -> aktifkan Google.");
+          } else {
+            setDiag("Login Google gagal: " + code);
+          }
+          if (statusEl) statusEl.textContent = "Gagal login";
+          showToast("Login gagal: " + code);
+        }
+      });
 
       async function initFirebaseSafely() {
         const statusEl = document.getElementById("sync-status");
         const authBtn = document.getElementById("auth-btn");
+        if (window.location.protocol === "file:") {
+          if (statusEl) statusEl.textContent = "Mode file lokal";
+          return;
+        }
         try {
           const appMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
           const authMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
           const fsMod = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
 
           const app = appMod.initializeApp(firebaseConfig);
-          const auth = authMod.getAuth(app);
+          fbAuth = authMod.getAuth(app);
           fbDb = fsMod.getFirestore(app);
           fbSetDoc = fsMod.setDoc;
           fbDoc = fsMod.doc;
           fbServerTimestamp = fsMod.serverTimestamp;
-          const provider = new authMod.GoogleAuthProvider();
+          fbSignInWithPopup = authMod.signInWithPopup;
+          fbSignInWithRedirect = authMod.signInWithRedirect;
+          fbSignOut = authMod.signOut;
+          fbProvider = new authMod.GoogleAuthProvider();
+          fbProvider.setCustomParameters({ prompt: "select_account" });
+          fbReady = true;
 
-          authBtn.addEventListener("click", async () => {
-            try {
-              if (fbUser) {
-                if (unsubSnapshot) { unsubSnapshot(); unsubSnapshot = null; }
-                await authMod.signOut(auth);
-                showToast("Keluar dari akun Google");
-              } else {
-                await authMod.signInWithPopup(auth, provider);
-              }
-            } catch (_) {
-              showToast("Login gagal: cek Authorized domains");
-            }
+          await authMod.getRedirectResult(fbAuth).catch((err) => {
+            if (err && err.code) setDiag("Redirect auth error: " + err.code);
           });
 
-          authMod.onAuthStateChanged(auth, async (user) => {
+          authMod.onAuthStateChanged(fbAuth, async (user) => {
             fbUser = user;
             if (unsubSnapshot) { unsubSnapshot(); unsubSnapshot = null; }
             if (!user) {
               authBtn.textContent = "Login Google";
-              if (statusEl) statusEl.textContent = "Mode lokal";
+              if (statusEl) statusEl.textContent = "Siap login";
               return;
             }
+            setDiag("");
             authBtn.textContent = "Keluar";
             if (statusEl) statusEl.textContent = "Menghubungkan...";
             const ref = fsMod.doc(fbDb, "users", user.uid, "dompetku", "state");
@@ -1896,7 +2079,7 @@
                   await syncToFirebase();
                 } else if (cloudTs > localTs) {
                   isApplyingCloud = true;
-                  state = { ...cloneDefault(), ...snap.data().payload, updatedAtClient: cloudTs };
+                  state = { ...cloneDefault(), ...snap.data().payload, categories: DEFAULT_STATE.categories, updatedAtClient: cloudTs };
                   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
                   renderAll();
                   isApplyingCloud = false;
@@ -1904,7 +2087,10 @@
               } else {
                 await syncToFirebase();
               }
-            } catch (_) {}
+            } catch (err) {
+              const code = err && err.code ? err.code : "cek-firestore";
+              setDiag("Login berhasil, tetapi Firestore menolak akses (" + code + "). Pastikan database Firestore sudah dibuat dan Rules sudah dipublish.");
+            }
 
             unsubSnapshot = fsMod.onSnapshot(ref, (docSnap) => {
               if (!docSnap.exists() || !docSnap.data().payload) return;
@@ -1912,7 +2098,7 @@
               const localTs = Number(state.updatedAtClient) || 0;
               if (cloudTs > localTs) {
                 isApplyingCloud = true;
-                state = { ...cloneDefault(), ...docSnap.data().payload, updatedAtClient: cloudTs };
+                state = { ...cloneDefault(), ...docSnap.data().payload, categories: DEFAULT_STATE.categories, updatedAtClient: cloudTs };
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
                 renderAll();
                 isApplyingCloud = false;
@@ -1922,12 +2108,12 @@
 
             if (statusEl) statusEl.textContent = "Live: " + (user.email || "Cloud");
           });
-        } catch (_) {
-          authBtn.addEventListener("click", () => showToast("Firebase offline, mode lokal aktif"));
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "SDK offline";
+          setDiag("Gagal memuat modul Firebase dari internet: " + (err && err.message ? err.message : "cek koneksi"));
         }
       }
 
-      // Navigation & Quick Actions
       document.querySelectorAll(".nav-item").forEach((btn) => {
         btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab")));
       });
@@ -1957,8 +2143,7 @@
       document.getElementById("run-import-btn").addEventListener("click", () => {
         const raw = (document.getElementById("import-text").value || "").trim();
         if (!raw) { showToast("Tempel baris mutasi dulu"); return; }
-        const lines = raw.split(/?
-/).map((l) => l.trim()).filter(Boolean);
+        const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
         const defaultWallet = state.wallets[0] ? state.wallets[0].id : "w_bca";
         let added = 0;
 
@@ -1969,8 +2154,8 @@
           if (!cleanNum || cleanNum <= 0) return;
 
           const lower = line.toLowerCase();
-          const type = /(masuk|income|terima|gaji|fee)/.test(lower) ? "income" : "expense";
-          const dateMatch = line.match(/(20\d{2}-\d{2}-\d{2})/);
+          const type = /\b(masuk|income|terima|gaji|fee)\b/.test(lower) ? "income" : "expense";
+          const dateMatch = line.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
           const dateVal = dateMatch ? dateMatch[1] : todayISO();
 
           let matchedCat = "Lainnya";
@@ -2028,11 +2213,10 @@
         });
         if (ok) {
           document.getElementById("tx-modal").classList.remove("open");
-          showToast("Transaksi tersimpan");
+          showToast("Tersimpan ke buku besar");
         }
       });
 
-      // Analitik toggle
       document.getElementById("ana-tab-cat").addEventListener("click", () => {
         document.getElementById("ana-tab-cat").classList.add("active");
         document.getElementById("ana-tab-cf").classList.remove("active");
@@ -2047,7 +2231,6 @@
       });
       document.getElementById("rekap-filter").addEventListener("change", renderAll);
 
-      // Wallet CRUD + Edit Saldo
       document.getElementById("add-wallet-modal-btn").addEventListener("click", () => {
         const name = prompt("Nama bank / dompet baru (misal: Bank Saqu, OVO):");
         if (!name || !name.trim()) return;
@@ -2091,7 +2274,6 @@
         }
       });
 
-      // Rekap CRUD
       document.getElementById("add-rekap-btn").addEventListener("click", () => {
         const inp = document.getElementById("new-rekap-name");
         const name = (inp.value || "").trim();
@@ -2130,7 +2312,6 @@
         }
       });
 
-      // Debt & Budget & Celengan
       document.getElementById("debt-pay-btn").addEventListener("click", () => {
         const inp = document.getElementById("debt-pay-input");
         const pay = Number(String(inp.value || "").replace(/[^\d]/g, ""));
@@ -2206,7 +2387,6 @@
         }
       });
 
-      // History search & filter & delete
       document.getElementById("history-search").addEventListener("input", (e) => {
         historyQuery = e.target.value || "";
         renderAll();
@@ -2225,7 +2405,6 @@
         if (delBtn) deleteTransaction(delBtn.getAttribute("data-del-id"));
       });
 
-      // Manual sync & visibility flush
       document.getElementById("sync-now-btn").addEventListener("click", async () => {
         if (!fbUser) { showToast("Login Google dulu untuk sync lintas device"); return; }
         await syncToFirebase();
